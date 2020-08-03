@@ -46,4 +46,27 @@ public class BowlingGameTest {
         assertEquals(expectedFrameScore2, bowlingGame.getFrameScores()[1]);
     }
 
+    @Test
+    public void given_second_throw_ten_pins_then_score_is_sum_of_ten_and_next_one_throw_score() {
+        bowlingGame.throwBall(0,0,5);
+        bowlingGame.throwBall(0,1,10);
+        bowlingGame.throwBall(1,0,2);
+        bowlingGame.throwBall(1,1,3);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore1 = 17;
+        int expectedFrameScore2 = 5;
+        assertEquals(expectedFrameScore1, bowlingGame.getFrameScores()[0]);
+        assertEquals(expectedFrameScore2, bowlingGame.getFrameScores()[1]);
+    }
+
+    @Test
+    public void given_tenth_frame_strike_then_score_is_sum_of_ten_and_next_two_throw_score() {
+        bowlingGame.throwBall(9,0,10);
+        bowlingGame.throwBall(10,1,3);
+        bowlingGame.throwBall(10,0,2);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore = 15;
+        assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
+    }
+
 }
