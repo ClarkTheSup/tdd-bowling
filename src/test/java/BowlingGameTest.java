@@ -79,4 +79,14 @@ public class BowlingGameTest {
         assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
     }
 
+    @Test
+    public void when_tenth_frame_no_strike_and_spare_then_score_is_sum_of_two_throw_score() {
+        bowlingGame.throwBall(9,0,5);
+        bowlingGame.throwBall(9,1,6);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore = 11;
+        assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
+    }
+
+
 }
