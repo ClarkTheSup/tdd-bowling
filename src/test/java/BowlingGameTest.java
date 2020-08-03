@@ -88,5 +88,14 @@ public class BowlingGameTest {
         assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
     }
 
+    @Test
+    public void when_tenth_frame_strike_and_new_frame_strike_then_score_is_20() {
+        bowlingGame.throwBall(9,0,10);
+        bowlingGame.throwBall(10,0,10);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore = 20;
+        assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
+    }
+
 
 }
