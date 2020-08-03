@@ -21,16 +21,29 @@ public class BowlingGameTest {
         int firstThrow = 2;
         int secondThrow = 3;
         int expected = firstThrow + secondThrow;
-        bowlingGame.throwBall(firstThrow);
-        bowlingGame.throwBall(secondThrow);
-        assertEquals(expected, bowlingGame.getCurrentFrameScore());
+        bowlingGame.throwBall(0,0, firstThrow);
+        bowlingGame.throwBall(0,1, secondThrow);
+        bowlingGame.calculateFrameScore();
+        assertEquals(expected, bowlingGame.getFrameScores()[0]);
     }
 
     @Test
     public void given_first_throw_ten_pins_then_cannot_throw_in_this_frame() {
-        bowlingGame.throwBall(10);
+        bowlingGame.throwBall(0,0,10);
         expectedException.expect(RuntimeException.class);
-        bowlingGame.throwBall(2);
+        bowlingGame.throwBall(0,1,2);
+    }
+
+    @Test
+    public void given_first_throw_ten_pins_then_score_is_sum_of_ten_and_next_two_throw_score() {
+        bowlingGame.throwBall(0,0,10);
+        bowlingGame.throwBall(1,0,2);
+        bowlingGame.throwBall(1,1,3);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore1 = 15;
+        int expectedFrameScore2 = 5;
+        assertEquals(expectedFrameScore1, bowlingGame.getFrameScores()[0]);
+        assertEquals(expectedFrameScore2, bowlingGame.getFrameScores()[1]);
     }
 
 }
