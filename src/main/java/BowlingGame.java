@@ -26,8 +26,6 @@ public class BowlingGame {
                 frameScores[i] += throwScores[i+1][0];
             }
         }
-
-
     }
 
     public int[][] getThrowScores() {

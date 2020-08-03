@@ -69,4 +69,14 @@ public class BowlingGameTest {
         assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
     }
 
+    @Test
+    public void given_tenth_frame_spare_then_score_is_sum_of_ten_and_next_one_throw_score() {
+        bowlingGame.throwBall(9,0,5);
+        bowlingGame.throwBall(9,1,10);
+        bowlingGame.throwBall(10,0,3);
+        bowlingGame.calculateFrameScore();
+        int expectedFrameScore = 18;
+        assertEquals(expectedFrameScore, bowlingGame.getFrameScores()[9]);
+    }
+
 }
